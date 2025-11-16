@@ -1,15 +1,19 @@
+import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
-import tailwindcss from '@tailwindcss/vite';
-import { defineConfig } from 'astro/config';
-import siteConfig from './src/data/site-config';
 
-// https://astro.build/config
 export default defineConfig({
-    site: 'https://marcoantonio2004.github.io/',
-    base: '/marcoagc.github.io/',
-    vite: {
-        plugins: [tailwindcss()]
-    },
-    integrations: [mdx(), sitemap()]
+  site: 'https://marcoantonio2004.github.io/marcoagc.github.io/',
+
+
+  integrations: [
+    tailwind({
+      config: {
+        applyBaseStyles: false
+      }
+    }),
+    mdx(),
+    sitemap()
+  ]
 });
