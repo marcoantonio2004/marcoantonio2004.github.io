@@ -1,0 +1,107 @@
+---
+import '../styles/global.css';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<html lang="es">
+  <BaseHead title="Autobiografía — Mi Blog" description="Conoce mi historia" />
+
+  <body class="min-h-screen flex flex-col bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
+
+    <Header current="autobiografia" />
+
+    <main class="container-custom py-12 flex-1">
+      <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow transition-colors duration-300">
+        <div class="grid md:grid-cols-3 gap-6">
+
+          <div class="md:col-span-2">
+            <h2 class="text-2xl font-bold mb-3 text-gray-800 dark:text-gray-100">
+              Autobiografía
+            </h2>
+
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+              Soy Marco Antonio García Cruz, originario de El Huizache, San José del Rincón, Estado de México.
+              Nací en el año 2004 y desde pequeño siempre tuve curiosidad por entender cómo funcionan las cosas,
+              especialmente los dispositivos electrónicos y las computadoras.
+            </p>
+
+            <h2 class="text-2xl font-bold mb-3 text-gray-800 dark:text-gray-100">
+              Formación Académica
+            </h2>
+            <ul class="list-disc pl-5 text-slate-600 dark:text-slate-300 mb-4">
+              <li>Primaria: Escuela Primaria “Eulalia Gúzman”</li>
+              <li>Secundaria: Escuela Secundaria No 0916 "José Vasconcelos"</li>
+              <li>Bachillerato: Escuela Preparatoria Oficial No. 215</li>
+              <li>Universidad: Universidad Mexiquense del Bicentenario — Ingeniería en Sistemas Computacionales</li>
+            </ul>
+            <p class="mb-6">Actualmente curso el séptimo semestre de la carrera y tengo 21 años.</p>
+
+            <h2 class="text-2xl font-bold mb-3 text-gray-800 dark:text-gray-100">
+              Metas Profesionales
+            </h2>
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+              Me gustaría trabajar en proyectos de innovación tecnológica que contribuyan a mejorar la vida de las personas
+              y optimizar procesos empresariales. También me interesa el ámbito de la ciberseguridad y la automatización.
+            </p>
+
+            <h2 class="text-2xl font-bold mb-3 text-gray-800 dark:text-gray-100">
+              Habilidades Técnicas
+            </h2>
+            <ul class="list-disc pl-5 text-slate-600 dark:text-slate-300 mb-6">
+              <li>Lenguajes de programación: Python, HTML, CSS y JavaScript.</li>
+              <li>Administración de redes con Cisco Packet Tracer.</li>
+              <li>Manejo de bases de datos MySQL.</li>
+            </ul>
+
+            <h2 class="text-2xl font-bold mb-3 text-gray-800 dark:text-gray-100">
+              Mis Valores
+            </h2>
+            <ul class="list-disc pl-5 text-slate-600 dark:text-slate-300 mb-6">
+              <li>Honestidad y respeto hacia los demás.</li>
+              <li>Responsabilidad en mis tareas y compromisos.</li>
+              <li>Perseverancia para superar cualquier reto.</li>
+              <li>Trabajo en equipo y buena comunicación.</li>
+            </ul>
+
+            <h2 class="text-2xl font-bold mb-3 text-gray-800 dark:text-gray-100">
+              Logros y Experiencias
+            </h2>
+            <ul class="list-disc pl-5 text-slate-600 dark:text-slate-300 mb-6">
+              <li>Participación en el concurso de Hackaton (2025).</li>
+              <li>Concursos de Robots en Atlacomulco y Valle de Bravo.</li>
+              <li>Competencias internas de peleas de robots.</li>
+            </ul>
+
+            <h2 class="text-2xl font-bold mb-3 text-gray-800 dark:text-gray-100">
+              Conclusión
+            </h2>
+            <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+              A lo largo de mi vida he aprendido que el esfuerzo, la disciplina y la constancia son la base del éxito.
+              Estoy convencido de que la ingeniería no solo es una carrera, sino una forma de transformar ideas en soluciones.
+              Seguiré trabajando cada día para cumplir mis metas y aportar algo positivo a la sociedad.
+            </p>
+          </div>
+
+          <aside class="flex flex-col items-center">
+            <img 
+              src="/images/autobigrafia.jpg" 
+              alt="mi foto" 
+              class="site-img w-full object-cover mb-3"
+            />
+            <p class="text-sm text-slate-500 dark:text-slate-400">
+              Foto personal
+            </p>
+          </aside>
+
+        </div>
+      </div>
+
+      <!-- SECCIÓN INFERIOR QUE YA TENÍAS -->
+      <div class="mt-8 grid sm:grid-cols-2 gap-6">
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>

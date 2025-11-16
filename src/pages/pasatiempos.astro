@@ -1,0 +1,44 @@
+---
+import '../styles/global.css';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+<html lang="es" class="dark:bg-slate-900 dark:text-slate-100">
+  <BaseHead title="Pasatiempos — Mi Blog" description="Qué me gusta hacer" />
+
+  <body class="min-h-screen flex flex-col bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
+
+    <Header current="pasatiempos" />
+
+    <main class="container-custom py-12 flex-1">
+
+
+      <div class="grid lg:grid-cols-2 gap-8 items-center">
+        <div>
+          <h2 class="text-2xl font-bold mb-3 dark:text-white">Mis pasatiempos</h2>
+
+          <p class="text-slate-600 mb-4 dark:text-slate-300">
+            Algunas de mis actividades favoritas son las siguientes
+          </p>
+
+          <ul class="list-disc pl-5 text-slate-600 dark:text-slate-300">
+            <li>Escuchar música.</li>
+            <li>Ver películas de ciencia ficción o comedia.</li>
+            <li>Tomar fotografías al aire libre.</li>
+          </ul>
+        </div>
+
+        <div>
+          <img 
+            src="/images/pasatiempos.jpg" 
+            alt="pasatiempos" 
+            class="site-img w-full h-64 object-cover"
+          />
+        </div>
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>
