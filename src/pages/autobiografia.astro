@@ -3,10 +3,6 @@ import '../styles/global.css';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-
-// Importas la imagen desde public/images
-import fotoAutobiografia from '/images/autobiografia.jpg';
-import { Image } from 'astro:assets';
 ---
 
 <html lang="es">
@@ -89,9 +85,9 @@ import { Image } from 'astro:assets';
           </div>
 
           <aside class="flex flex-col items-center">
-            <Image 
-              src={fotoAutobiografia}
-              alt="mi foto"
+            <img 
+              src="/marcoagc.github.io/images/autobiografia.jpg" 
+              alt="mi foto" 
               class="site-img w-full object-cover mb-3"
             />
             <p class="text-sm text-slate-500 dark:text-slate-400">
