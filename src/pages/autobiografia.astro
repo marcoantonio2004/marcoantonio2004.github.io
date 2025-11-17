@@ -5,17 +5,17 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
 
-<html lang="es">
+<html lang="es" class="dark:bg-slate-900 dark:text-slate-100">
   <BaseHead title="Autobiografía — Mi Blog" description="Conoce mi historia" />
 
   <body class="min-h-screen flex flex-col bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
-
     <Header current="autobiografia" />
 
     <main class="container-custom py-12 flex-1">
       <div class="bg-white dark:bg-gray-800 p-8 rounded-lg shadow transition-colors duration-300">
         <div class="grid md:grid-cols-3 gap-6">
 
+          <!-- CONTENIDO PRINCIPAL -->
           <div class="md:col-span-2">
             <h2 class="text-2xl font-bold mb-3 text-gray-800 dark:text-gray-100">
               Autobiografía
@@ -36,7 +36,9 @@ import Footer from '../components/Footer.astro';
               <li>Bachillerato: Escuela Preparatoria Oficial No. 215</li>
               <li>Universidad: Universidad Mexiquense del Bicentenario — Ingeniería en Sistemas Computacionales</li>
             </ul>
-            <p class="mb-6">Actualmente curso el séptimo semestre de la carrera y tengo 21 años.</p>
+            <p class="mb-6">
+              Actualmente curso el séptimo semestre de la carrera y tengo 21 años.
+            </p>
 
             <h2 class="text-2xl font-bold mb-3 text-gray-800 dark:text-gray-100">
               Metas Profesionales
@@ -84,10 +86,11 @@ import Footer from '../components/Footer.astro';
             </p>
           </div>
 
+          <!-- IMAGEN LATERAL -->
           <aside class="flex flex-col items-center">
             <img 
-              src="/marcoagc.github.io/images/autobiografia.jpg" 
-              alt="mi foto" 
+              src="/images/autobiografia.jpg"
+              alt="mi foto"
               class="site-img w-full object-cover mb-3"
             />
             <p class="text-sm text-slate-500 dark:text-slate-400">
@@ -97,8 +100,6 @@ import Footer from '../components/Footer.astro';
 
         </div>
       </div>
-
-      <div class="mt-8 grid sm:grid-cols-2 gap-6"></div>
     </main>
 
     <Footer />

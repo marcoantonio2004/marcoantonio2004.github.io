@@ -4,7 +4,8 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 ---
-<html lang="es" class="dark:bg-slate-900 dark:text-slate-100">
+
+<html lang="es">
   <BaseHead title="Inicio — Mi Blog" description="Bienvenido a mi blog personal" />
 
   <body class="min-h-screen flex flex-col bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
@@ -12,61 +13,97 @@ import Footer from '../components/Footer.astro';
     <Header current="home" />
 
     <main class="container-custom py-12 flex-1">
+
+      <!-- SECCIÓN PRINCIPAL -->
       <section class="grid lg:grid-cols-2 gap-8 items-center">
         <div>
-          <h2 class="text-3xl font-extrabold mb-4 dark:text-white">Hola — Bienvenido a mi blog</h2>
+          <h2 class="text-3xl font-extrabold mb-4 dark:text-white">
+            Hola — Bienvenido a mi blog
+          </h2>
+
           <p class="text-lg text-slate-600 mb-6 dark:text-slate-300">
             Aquí comparto sobre mi vida, pasatiempos y proyectos. Navega las secciones para conocerme mejor.
           </p>
+
           <div class="flex gap-3">
-            <!-- ENLACE ARREGLADO -->
-            <a class="inline-block bg-primary text-white py-2 px-4 rounded shadow" href="/autobiografia">
+            <a class="inline-block bg-primary text-white py-2 px-4 rounded shadow"
+               href="/autobiografia">
               Sobre mí
             </a>
 
             <a class="inline-block border py-2 px-4 rounded 
                border-slate-300 dark:border-slate-600 
-               dark:text-slate-200" 
+               dark:text-slate-200"
                href="/galeria">
               Ver galería
             </a>
           </div>
         </div>
 
+        <!-- IMAGEN PRINCIPAL -->
         <div>
-          <!-- IMAGEN ARREGLADA -->
-          <img src="/images/proyecto.jpg" alt="portada" class="site-img w-full object-cover h-64" />
+          <img
+            src="/images/proyecto.jpg"
+            alt="portada"
+            class="site-img w-full object-cover h-64"
+          />
         </div>
       </section>
 
+      <!-- ARTÍCULOS DESTACADOS -->
       <section class="mt-12">
         <h3 class="text-2xl font-bold mb-4 dark:text-white">Artículos destacados</h3>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <!-- ARTÍCULO 1 -->
           <article class="bg-white p-6 rounded-lg shadow-sm dark:bg-slate-800 dark:shadow-lg">
-            <img src="/images/foto1.jpg" alt="mini" class="site-img mb-4 h-40 w-full object-cover"/>
+            <img
+              src="/images/foto1.jpg"
+              alt="mini"
+              class="site-img mb-4 h-40 w-full object-cover"
+            />
             <h4 class="font-semibold mb-2 dark:text-white">Mi primer proyecto</h4>
-            <p class="text-sm text-slate-600 mb-3 dark:text-slate-300">He participado en la creación de un robot de pelea.</p>
+            <p class="text-sm text-slate-600 mb-3 dark:text-slate-300">
+              He participado en la creación de un robot de pelea.
+            </p>
             <a href="/autobiografia" class="text-sm font-medium text-primary">Leer más →</a>
           </article>
 
+          <!-- ARTÍCULO 2 -->
           <article class="bg-white p-6 rounded-lg shadow-sm dark:bg-slate-800 dark:shadow-lg">
-            <img src="/images/foto2.jpg" alt="mini" class="site-img mb-4 h-40 w-full object-cover"/>
+            <img
+              src="/images/foto2.jpg"
+              alt="mini"
+              class="site-img mb-4 h-40 w-full object-cover"
+            />
             <h4 class="font-semibold mb-2 dark:text-white">Sobre mis pasatiempos</h4>
-            <p class="text-sm text-slate-600 mb-3 dark:text-slate-300">Me gusta ir a ferias cuando son días festivos.</p>
+            <p class="text-sm text-slate-600 mb-3 dark:text-slate-300">
+              Me gusta ir a ferias cuando son días festivos.
+            </p>
             <a href="/pasatiempos" class="text-sm font-medium text-primary">Leer más →</a>
           </article>
 
+          <!-- ARTÍCULO 3 -->
           <article class="bg-white p-6 rounded-lg shadow-sm dark:bg-slate-800 dark:shadow-lg">
-            <img src="/images/foto3.jpg" alt="mini" class="site-img mb-4 h-40 w-full object-cover"/>
+            <img
+              src="/images/foto3.jpg"
+              alt="mini"
+              class="site-img mb-4 h-40 w-full object-cover"
+            />
             <h4 class="font-semibold mb-2 dark:text-white">Galería</h4>
-            <p class="text-sm text-slate-600 mb-3 dark:text-slate-300">Algunas fotos de mis pasatiempos.</p>
+            <p class="text-sm text-slate-600 mb-3 dark:text-slate-300">
+              Algunas fotos de mis pasatiempos.
+            </p>
             <a href="/galeria" class="text-sm font-medium text-primary">Ver galería →</a>
           </article>
+
         </div>
       </section>
+
     </main>
 
     <Footer />
+
   </body>
 </html>
