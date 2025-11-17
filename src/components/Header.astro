@@ -1,14 +1,13 @@
 ---
 const links = [
   { name: "Inicio", path: "/" },
-  { name: "Autobiografía", path: "/autobiografia" },
-  { name: "Cualidades", path: "/cualidades" },
-  { name: "Pasatiempos", path: "/pasatiempos" },
-  { name: "Galería", path: "/galeria" },
-  { name: "Contacto", path: "/contacto" }
+  { name: "Autobiografía", path: "/autobiografia/" },
+  { name: "Cualidades", path: "/cualidades/" },
+  { name: "Pasatiempos", path: "/pasatiempos/" },
+  { name: "Galería", path: "/galeria/" },
+  { name: "Contacto", path: "/contacto/" }
 ];
 ---
-
 <header class="sticky top-0 bg-white dark:bg-gray-900 shadow z-50 transition-colors duration-300">
   <nav class="max-w-5xl mx-auto flex items-center justify-between p-4">
     
@@ -32,12 +31,10 @@ const links = [
         class="p-2 rounded-full border border-gray-300 dark:border-gray-600 transition hover:scale-110 duration-300 text-gray-800 dark:text-yellow-300"
         aria-label="Toggle Dark Mode"
       >
-        <!-- Ícono SOL (visible en modo oscuro) -->
         <svg id="theme-toggle-light-icon" class="w-6 h-6 hidden dark:block" fill="currentColor" viewBox="0 0 20 20">
           <path d="M10 15a5 5 0 100-10 5 5 0 000 10z" />
         </svg>
 
-        <!-- Ícono LUNA (visible en modo claro) -->
         <svg id="theme-toggle-dark-icon" class="w-6 h-6 block dark:hidden" fill="currentColor" viewBox="0 0 20 20">
           <path d="M17 13a7 7 0 01-9-9 1 1 0 00-1-1 1 1 0 00-.9.55A9 9 0 1018 14a1 1 0 00-1-1z"/>
         </svg>
@@ -46,15 +43,12 @@ const links = [
   </nav>
 </header>
 
-
-<!-- SCRIPT PARA MODO OSCURO (funciona en Astro) -->
 <script is:inline>
   const html = document.documentElement;
   const themeToggleBtn = document.getElementById("theme-toggle");
   const sunIcon = document.getElementById("theme-toggle-light-icon");
   const moonIcon = document.getElementById("theme-toggle-dark-icon");
 
-  // Estado inicial correcto
   if (
     localStorage.theme === "dark" ||
     (!localStorage.theme && window.matchMedia("(prefers-color-scheme: dark)").matches)
@@ -68,7 +62,6 @@ const links = [
     moonIcon.classList.remove("hidden");
   }
 
-  // Botón para alternar
   themeToggleBtn.addEventListener("click", () => {
     const dark = html.classList.toggle("dark");
     if (dark) {
