@@ -3,6 +3,32 @@ import '../styles/global.css';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+
+// Manejo del formulario en el servidor
+let formMessage = '';
+let formError = '';
+
+if (Astro.request?.method === 'POST') {
+  try {
+    const data = await Astro.request.formData();
+    const nombre = data.get('nombre')?.toString() || '';
+    const correo = data.get('correo')?.toString() || '';
+    const mensaje = data.get('mensaje')?.toString() || '';
+
+    // Validación básica
+    if (!nombre || !correo || !mensaje) {
+      formError = 'Por favor completa todos los campos.';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo)) {
+      formError = 'Por favor ingresa un correo válido.';
+    } else {
+      // Aquí puedes agregar la lógica para enviar el correo
+      // Por ahora solo mostraremos un mensaje de éxito
+      formMessage = '¡Gracias! Tu mensaje ha sido enviado correctamente.';
+    }
+  } catch (error) {
+    formError = 'Hubo un error al procesar el formulario.';
+  }
+}
 ---
 <html lang="es" class="dark:bg-slate-900 dark:text-slate-100">
   <BaseHead title="Contacto — Mi Blog" description="Contáctame" />
@@ -22,26 +48,94 @@ import Footer from '../components/Footer.astro';
         <h2 class="text-2xl font-bold mb-4 dark:text-white">Contacto</h2>
 
         <p class="text-slate-600 mb-6 dark:text-slate-300">
-          Si quieres contactarme da clic en alguno de los siguientes enlaces o envíame un correo a:
-          <strong class="dark:text-white">marooagc04@gmail.com</strong>
+          Si quieres contactarme da clic en alguno de los siguientes enlaces o envíame un mensaje mediante el formulario:
         </p>
-            <div class="flex flex-col gap-3 text-lg">
-            <a href="mailto:marooagc04@gmail.com" class="flex items-center gap-2 hover:text-primary">
+
+        <!-- Mensajes de éxito o error -->
+        {formMessage && (
+          <div class="mb-6 p-4 bg-green-100 border border-green-400 text-green-700 rounded dark:bg-green-900 dark:border-green-600 dark:text-green-200">
+            {formMessage}
+          </div>
+        )}
+
+        {formError && (
+          <div class="mb-6 p-4 bg-red-100 border border-red-400 text-red-700 rounded dark:bg-red-900 dark:border-red-600 dark:text-red-200">
+            {formError}
+          </div>
+        )}
+
+        <!-- Formulario de contacto -->
+        <form method="POST" class="mb-8">
+          <div class="mb-4">
+            <label for="nombre" class="block text-sm font-medium mb-2 dark:text-slate-300">
+              Nombre
+            </label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              required
+              class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:border-primary dark:bg-slate-700 dark:border-slate-600 dark:text-white"
+              placeholder="Tu nombre"
+            />
+          </div>
+
+          <div class="mb-4">
+            <label for="correo" class="block text-sm font-medium mb-2 dark:text-slate-300">
+              Correo
+            </label>
+            <input
+              type="email"
+              id="correo"
+              name="correo"
+              required
+              class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:border-primary dark:bg-slate-700 dark:border-slate-600 dark:text-white"
+              placeholder="tu@correo.com"
+            />
+          </div>
+
+          <div class="mb-6">
+            <label for="mensaje" class="block text-sm font-medium mb-2 dark:text-slate-300">
+              Mensaje
+            </label>
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              rows="5"
+              required
+              class="w-full px-4 py-2 border border-slate-300 rounded-lg focus:outline-none focus:border-primary dark:bg-slate-700 dark:border-slate-600 dark:text-white"
+              placeholder="Tu mensaje aquí..."
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full px-6 py-3 bg-blue-600 text-white font-medium rounded-lg hover:bg-blue-700 transition-colors dark:bg-blue-700 dark:hover:bg-blue-800"
+          >
+            Enviar Mensaje
+          </button>
+        </form>
+
+        <!-- Enlaces de contacto alternativo -->
+        <div class="border-t pt-6 dark:border-slate-700">
+          <h3 class="text-lg font-semibold mb-4 dark:text-white">También puedes contactarme en:</h3>
+          <div class="flex flex-col gap-3 text-lg">
+            <a href="mailto:marooagc04@gmail.com" class="flex items-center gap-2 hover:text-blue-600 dark:hover:text-blue-400">
                 <i class="fa-solid fa-envelope"></i>
-                Enviar correo
+                marooagc04@gmail.com
             </a>
 
-            <a href="https://www.facebook.com/share/1BtLCoK84K/" target="_blank" class="flex items-center gap-2 hover:text-primary">
+            <a href="https://www.facebook.com/share/1BtLCoK84K/" target="_blank" class="flex items-center gap-2 hover:text-blue-600 dark:hover:text-blue-400">
                 <i class="fa-brands fa-facebook"></i>
                 Facebook
             </a>
 
-            <a href="https://wa.me/7122294682" target="_blank" class="flex items-center gap-2 hover:text-primary">
+            <a href="https://wa.me/7122294682" target="_blank" class="flex items-center gap-2 hover:text-blue-600 dark:hover:text-blue-400">
                 <i class="fa-brands fa-whatsapp"></i>
                 WhatsApp
             </a>
 
-            <a href="https://www.instagram.com/marcogarcia906?igsh=MWo2czdwMnYyYnhrZg==" target="_blank" class="flex items-center gap-2 hover:text-primary">
+            <a href="https://www.instagram.com/marcogarcia906?igsh=MWo2czdwMnYyYnhrZg==" target="_blank" class="flex items-center gap-2 hover:text-blue-600 dark:hover:text-blue-400">
                 <i class="fa-brands fa-instagram"></i>
                 Instagram
             </a>
