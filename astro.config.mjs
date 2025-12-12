@@ -3,16 +3,14 @@ import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
+import react from '@astrojs/react';
+
 export default defineConfig({
   site: 'https://marcoantonio2004.github.io',
   base: '/',
-  integrations: [
-    tailwind({
-      config: {
-        applyBaseStyles: false
-      }
-    }),
-    mdx(),
-    sitemap()
-  ]
+  integrations: [tailwind({
+    config: {
+      applyBaseStyles: false
+    }
+  }), mdx(), sitemap(), react()]
 });

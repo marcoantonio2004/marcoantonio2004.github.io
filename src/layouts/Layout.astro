@@ -1,0 +1,24 @@
+---
+import '../styles/global.css';
+
+const {
+  title = "Marco Antonio | Portafolio",
+  description = "Portafolio personal de Marco Antonio"
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+
+  <body>
+    <!-- Aquí se inserta todo el contenido de la página -->
+    <slot />
+  </body>
+</html>
