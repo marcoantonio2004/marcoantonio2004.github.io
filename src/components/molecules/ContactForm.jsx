@@ -62,7 +62,7 @@ export default function ContactForm() {
     };
 
     try {
-      await fetch("https://script.google.com/macros/s/AKfycbzYlqHQQVgwBblp9q5oqTnaJzyW_qMYtPlkdlcxRdby5ZV1-atOWMhkeJQLFM3sqhCsbg/exec", {
+      await fetch("https://script.google.com/macros/s/AKfycbyOOlgYWwM9-JFIIHF7kmJNK83vhf0uPnUKeuEyMPZgZJ7y-iv-jWejjCpmnKnIY8LA/exec", {
         method: "POST",
         body: JSON.stringify(data),
       });
