@@ -1,0 +1,128 @@
+---
+import '../../styles/global.css';
+import BaseHead from '../../components/BaseHead.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+// Generar rutas estáticas para cada pasatiempo
+export async function getStaticPaths() {
+  const pasatiempos = await getCollection('pasatiempos');
+  return pasatiempos.map((pasatiempo) => ({
+    params: { slug: pasatiempo.slug },
+    props: { pasatiempo },
+  }));
+}
+
+const { pasatiempo } = Astro.props;
+const { Content } = await pasatiempo.render();
+
+// Formatear fecha
+const formattedDate = pasatiempo.data.publishDate.toLocaleDateString('es-ES', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+<html lang="es" class="dark:bg-slate-900 dark:text-slate-100">
+  <BaseHead 
+    title={`${pasatiempo.data.title} — Pasatiempos`} 
+    description={pasatiempo.data.description} 
+  />
+
+  <body class="min-h-screen flex flex-col bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
+    <Header current="pasatiempos" />
+
+    <main class="container-custom py-12 flex-1">
+      <article class="max-w-3xl mx-auto">
+        {/* Breadcrumb */}
+        <nav class="mb-6 text-sm text-slate-600 dark:text-slate-400">
+          <a href="/" class="hover:text-blue-600 dark:hover:text-blue-400">Inicio</a>
+          <span class="mx-2">/</span>
+          <a href="/pasatiempos" class="hover:text-blue-600 dark:hover:text-blue-400">Pasatiempos</a>
+          <span class="mx-2">/</span>
+          <span class="text-slate-800 dark:text-slate-200">{pasatiempo.data.title}</span>
+        </nav>
+
+        {/* Imagen destacada */}
+        {pasatiempo.data.image && (
+          <img 
+            src={pasatiempo.data.image} 
+            alt={pasatiempo.data.title}
+            class="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg mb-8"
+          />
+        )}
+
+        {/* Título y metadata */}
+        <header class="mb-8">
+          <h1 class="text-4xl md:text-5xl font-bold mb-4 dark:text-white">
+            {pasatiempo.data.title}
+          </h1>
+          
+          <p class="text-xl text-slate-600 dark:text-slate-300 mb-4">
+            {pasatiempo.data.description}
+          </p>
+
+          <div class="flex items-center gap-4 text-sm text-slate-600 dark:text-slate-400">
+            <time datetime={pasatiempo.data.publishDate.toISOString()}>
+              📅 {formattedDate}
+            </time>
+          </div>
+
+          {/* Tags */}
+          {pasatiempo.data.tags && pasatiempo.data.tags.length > 0 && (
+            <div class="flex flex-wrap gap-2 mt-4">
+              {pasatiempo.data.tags.map((tag) => (
+                <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-sm px-3 py-1 rounded-full">
+                  #{tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </header>
+
+        {/* Contenido del markdown */}
+        <div class="prose prose-slate dark:prose-invert max-w-none
+                    prose-headings:font-bold prose-headings:dark:text-white
+                    prose-p:text-slate-700 prose-p:dark:text-slate-300
+                    prose-a:text-blue-600 prose-a:dark:text-blue-400
+                    prose-strong:text-slate-900 prose-strong:dark:text-slate-100
+                    prose-code:text-blue-600 prose-code:dark:text-blue-400
+                    prose-blockquote:border-l-blue-500 prose-blockquote:dark:border-l-blue-400
+                    prose-img:rounded-lg prose-img:shadow-md">
+          <Content />
+        </div>
+
+        {/* Botón volver */}
+        <div class="mt-12 pt-8 border-t border-slate-200 dark:border-slate-700">
+          <a 
+            href="/pasatiempos"
+            class="inline-flex items-center gap-2 text-blue-600 dark:text-blue-400 hover:underline font-semibold"
+          >
+            ← Volver a Pasatiempos
+          </a>
+        </div>
+      </article>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+
+<style>
+  /* Estilos adicionales para el contenido markdown si es necesario */
+  article :global(img) {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  article :global(h2) {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  article :global(h3) {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+</style>

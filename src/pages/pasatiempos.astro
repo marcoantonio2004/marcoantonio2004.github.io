@@ -3,40 +3,78 @@ import '../styles/global.css';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+// Obtener todos los pasatiempos ordenados por fecha
+const pasatiempos = (await getCollection('pasatiempos')).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
 ---
 <html lang="es" class="dark:bg-slate-900 dark:text-slate-100">
   <BaseHead title="Pasatiempos — Mi Blog" description="Qué me gusta hacer" />
 
   <body class="min-h-screen flex flex-col bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100">
-
     <Header current="pasatiempos" />
 
     <main class="container-custom py-12 flex-1">
-
-
-      <div class="grid lg:grid-cols-2 gap-8 items-center">
-        <div>
-          <h2 class="text-2xl font-bold mb-3 dark:text-white">Mis pasatiempos</h2>
-
-          <p class="text-slate-600 mb-4 dark:text-slate-300">
-            Algunas de mis actividades favoritas son las siguientes
-          </p>
-
-          <ul class="list-disc pl-5 text-slate-600 dark:text-slate-300">
-            <li>Escuchar música.</li>
-            <li>Ver películas de ciencia ficción o comedia.</li>
-            <li>Tomar fotografías al aire libre.</li>
-          </ul>
-        </div>
-
-        <div>
-          <img 
-            src="/images/pasatiempos.jpg" 
-            alt="pasatiempos" 
-            class="site-img w-full h-64 object-cover"
-          />
-        </div>
+      <div class="mb-12">
+        <h1 class="text-4xl font-bold mb-4 dark:text-white">Mis Pasatiempos</h1>
+        <p class="text-slate-600 dark:text-slate-300 text-lg">
+          Estas son las actividades que más disfruto en mi tiempo libre. Cada una me aporta algo único y me ayuda a crecer como persona.
+        </p>
       </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {pasatiempos.map((pasatiempo) => (
+          <article class="bg-white dark:bg-slate-800 rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            {pasatiempo.data.image && (
+              <img 
+                src={pasatiempo.data.image} 
+                alt={pasatiempo.data.title}
+                class="w-full h-48 object-cover"
+              />
+            )}
+            
+            <div class="p-6">
+              <h2 class="text-2xl font-bold mb-2 dark:text-white">
+                <a 
+                  href={`/pasatiempos/${pasatiempo.slug}`}
+                  class="hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                >
+                  {pasatiempo.data.title}
+                </a>
+              </h2>
+              
+              <p class="text-slate-600 dark:text-slate-300 mb-4">
+                {pasatiempo.data.description}
+              </p>
+
+              {pasatiempo.data.tags && (
+                <div class="flex flex-wrap gap-2 mb-4">
+                  {pasatiempo.data.tags.map((tag) => (
+                    <span class="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 text-xs px-2 py-1 rounded">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              <a 
+                href={`/pasatiempos/${pasatiempo.slug}`}
+                class="inline-block text-blue-600 dark:text-blue-400 font-semibold hover:underline"
+              >
+                Leer más →
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      {pasatiempos.length === 0 && (
+        <p class="text-center text-slate-600 dark:text-slate-400 py-12">
+          No hay pasatiempos publicados todavía.
+        </p>
+      )}
     </main>
 
     <Footer />
