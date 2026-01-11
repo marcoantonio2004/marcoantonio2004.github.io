@@ -2,7 +2,7 @@
 title: "Películas de Ciencia Ficción y Comedia"
 description: "Mis géneros cinematográficos favoritos y por qué me encantan"
 image: "/images/peliculas.jpg"
-publishDate: 2024-01-20
+publishDate: 2025-12-32
 tags: ["cine", "entretenimiento", "sci-fi", "comedia"]
 ---
 
@@ -10,7 +10,7 @@ tags: ["cine", "entretenimiento", "sci-fi", "comedia"]
 
 Ver películas es una de mis formas favoritas de desconectar y, al mismo tiempo, aprender sobre diferentes perspectivas del mundo.
 
-### Ciencia Ficción
+### **Ciencia Ficción**
 
 La ciencia ficción me fascina porque explora posibilidades futuras y dilemas filosóficos:
 
@@ -19,18 +19,16 @@ La ciencia ficción me fascina porque explora posibilidades futuras y dilemas fi
 - **The Matrix** - Realidad vs. simulación
 - **Arrival** - Comunicación y percepción del tiempo
 
-### Comedia
+### **Comedia**
 
 Las comedias me ayudan a mantener un balance y ver el lado ligero de la vida:
 
-- **The Grand Budapest Hotel** - Estética y humor quirky
-- **Superbad** - Humor sincero sobre la amistad
-- **Hot Fuzz** - Comedia de acción británica
-- **Everything Everywhere All at Once** - Una mezcla perfecta de géneros
+- **La máscara** - Un clasico del actor Jim Carrey
+- **Mitchell vs Las máquinas** - Una familia común contra el fin del mundo
 
-### Lo que más valoro
+### **Lo que más valoro**
 
-En una buena película busco:
+## En una buena película busco:
 - Una narrativa bien construida
 - Personajes con profundidad
 - Cinematografía cuidada
